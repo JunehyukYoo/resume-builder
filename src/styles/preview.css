@@ -1,0 +1,10 @@
+.preview {
+  flex: 1;
+  margin: 1rem;
+  padding: 10px;
+  min-width: 350px;
+  text-align: center;
+  color: black;
+  background-color: white;
+  border: 3px solid rgb(80, 90, 90);
+}
