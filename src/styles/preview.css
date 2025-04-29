@@ -8,3 +8,14 @@
   background-color: white;
   border: 3px solid rgb(80, 90, 90);
 }
+
+.preview-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.preview > div {
+  flex: 1;
+  display: flex;
+  justify-content: column;
+}

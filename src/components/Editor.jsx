@@ -47,7 +47,6 @@ const Editor = ({ data, handleChange }) => {
             onChange={handleChangeBasic}
           />
         </fieldset>
-
         <div>ADD WEBSITES/LINKS/SOCIAL MEDIA FUNCTIONALITY</div>
       </form>
     </div>
