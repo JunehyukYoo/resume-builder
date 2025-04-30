@@ -2,6 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: Calibri, "Times New Roman";
 }
 
 #root {
@@ -11,32 +12,47 @@
   height: 100vh;
 }
 
-.header {
-  padding: 10px;
-  text-align: center;
-  min-height: 20px;
-  width: 100%;
-  background-color: rgb(53, 53, 53);
-}
-
-.header h1 {
-  color: white;
-  font-size: 2.5rem;
-  margin: 0;
-}
-
-.wrapper {
+.app-container {
   display: flex;
-  height: 100%;
+  background-color: antiquewhite;
+  color: black;
 }
 
-/* .editor,
-.preview {
-  flex: 1;
-  margin: 1rem;
-  padding: 10px;
-  min-width: 350px;
-  text-align: center;
-  border: 3px solid rgb(80, 90, 90);
-  border-radius: 20px;
-} */
+/* Print-specific overrides */
+@media print {
+  @page {
+    size: A4 portrait;
+    margin: 20mm;
+  }
+  html,
+  body,
+  #root,
+  .app-container {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    display: block !important;
+    visibility: hidden; /* hide everything by default */
+    overflow: visible;
+  }
+
+  /* 3) Only show the preview and its children */
+  .preview,
+  .preview * {
+    visibility: visible;
+  }
+
+  /* 4) Position the preview to fill the A4 sheet exactly */
+  .preview {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 210mm; /* exact A4 width */
+    height: 297mm; /* exact A4 height */
+    margin: 0; /* don’t let the browser add gutters */
+    box-shadow: none;
+    padding: 0;
+    page-break-after: avoid;
+  }
+}

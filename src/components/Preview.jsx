@@ -1,7 +1,7 @@
 import "../styles/preview.css";
 
 function Preview({ data }) {
-  const [basicData, extraData] = data;
+  const [basicData, links] = data;
 
   return (
     <>
@@ -13,11 +13,12 @@ function Preview({ data }) {
             <p>{basicData.location}</p>
           </div>
           <h1 className="ed-name">{basicData.name}</h1>
-          <div>
-            {extraData.links.map((link) => {
-              return <p>{link}</p>;
-            })}
-          </div>
+          <ul>
+            {links.length > 0 &&
+              links.map((link) => {
+                return <li key={link.id}>{link.url}</li>;
+              })}
+          </ul>
         </div>
         <hr></hr>
         <p>ADD MORE STUFF HERE</p>

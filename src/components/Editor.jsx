@@ -1,11 +1,11 @@
 import "../styles/editor.css";
 
 const Editor = ({ data, handleChange }) => {
-  const [basicData, extraData] = data;
-  const [handleChangeBasic, handleChangeExtra] = handleChange;
+  const [basicData, links] = data;
+  const [handleChangeBasic, handleChangeLinks, handleClearAll, handleReset] =
+    handleChange;
   return (
     <div className="editor">
-      <h2>Editor</h2>
       <form>
         <fieldset>
           <legend>Basic Information:</legend>
@@ -47,8 +47,36 @@ const Editor = ({ data, handleChange }) => {
             onChange={handleChangeBasic}
           />
         </fieldset>
-        <div>ADD WEBSITES/LINKS/SOCIAL MEDIA FUNCTIONALITY</div>
+
+        <fieldset>
+          <legend>Links</legend>
+          {links.length > 0
+            ? links.map((link) => {
+                return (
+                  <li key={link.id}>
+                    {link.url}{" "}
+                    <span>
+                      <button
+                        id={link.id}
+                        onClick={(e) => handleChangeLinks(e, "delete")}
+                      >
+                        Delete
+                      </button>
+                    </span>
+                  </li>
+                );
+              })
+            : null}
+          <div>
+            <input type="text" />
+            <button onClick={(e) => handleChangeLinks(e, "add")}>
+              Add Link
+            </button>
+          </div>
+        </fieldset>
       </form>
+      <button onClick={handleReset}>Reset Example</button>
+      <button onClick={handleClearAll}>Clear All</button>
     </div>
   );
 };

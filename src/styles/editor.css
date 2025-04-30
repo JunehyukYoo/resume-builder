@@ -1,9 +1,23 @@
 .editor {
-  flex: 1;
   margin: 1rem;
   padding: 10px;
-  min-width: 350px;
+  min-width: 400px;
   text-align: center;
   border: 3px solid rgb(80, 90, 90);
+  background-color: aliceblue;
+  max-width: 30vw;
   border-radius: 20px;
+}
+
+.editor * {
+  margin: 1px 10px;
+}
+
+.editor fieldset {
+  display: flex;
+  flex-direction: column;
+}
+
+.editor fieldset label {
+  text-align: left;
 }

@@ -1,12 +1,19 @@
 .preview {
   flex: 1;
-  margin: 1rem;
-  padding: 10px;
-  min-width: 350px;
   text-align: center;
   color: black;
   background-color: white;
-  border: 3px solid rgb(80, 90, 90);
+  margin: 1rem;
+
+  aspect-ratio: 210 / 297;
+  /* scale to either real-world 210 mm or 80% of viewport width, whichever is smaller */
+  width: min(210mm, 80vw);
+
+  background: white;
+  padding: 20mm; /* physical-unit padding for print / reference */
+  box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.2);
+  box-sizing: border-box;
+  overflow: hidden;
 }
 
 .preview-header {
