@@ -7,7 +7,7 @@ export const initBasicData = {
 };
 
 export const clearBasicData = {
-  name: "",
+  name: "Name",
   email: "",
   location: "",
   number: "",
@@ -22,8 +22,9 @@ export const initLinks = [
 
 export const initEducation = [
   {
+    id: crypto.randomUUID(),
     school: "Stanford University",
-    degree: "Masters",
+    degree: "M.S.",
     major: "Computer Science",
     gpa: "3.50",
     startDate: "8/2025",
@@ -31,8 +32,9 @@ export const initEducation = [
     endDate: "5/2027",
   },
   {
+    id: crypto.randomUUID(),
     school: "University of Illinois at Urbana-Champaign",
-    degree: "Bachelors",
+    degree: "B.S.",
     major: "Computer Science",
     gpa: "3.80",
     startDate: "8/2020",

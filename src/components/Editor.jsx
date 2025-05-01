@@ -1,9 +1,14 @@
 import "../styles/editor.css";
 
 const Editor = ({ data, handleChange }) => {
-  const [basicData, links] = data;
-  const [handleChangeBasic, handleChangeLinks, handleClearAll, handleReset] =
-    handleChange;
+  const [basicData, links, education] = data;
+  const [
+    handleChangeBasic,
+    handleChangeLinks,
+    handleChangeEducation,
+    handleClearAll,
+    handleReset,
+  ] = handleChange;
   return (
     <div className="editor">
       <form>
@@ -85,7 +90,23 @@ const Editor = ({ data, handleChange }) => {
 
         <fieldset>
           <legend>Education</legend>
-          {}
+          {education.length > 0 &&
+            education.map((edu) => {
+              return (
+                <div key={edu.id}>
+                  {edu.school}
+                  <span>
+                    <button
+                      id={edu.id}
+                      onClick={(e) => handleChangeEducation(e, "delete")}
+                    >
+                      X
+                    </button>
+                  </span>
+                </div>
+              );
+            })}
+          <button>Add Education</button>
         </fieldset>
       </form>
       <button onClick={handleReset}>Reset Example</button>

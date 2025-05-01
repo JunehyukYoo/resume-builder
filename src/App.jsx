@@ -4,7 +4,7 @@ import Preview from "./components/Preview";
 import {
   initBasicData,
   initLinks,
-  //initEducation,
+  initEducation,
   clearBasicData,
 } from "./components/data";
 import "./App.css";
@@ -12,7 +12,7 @@ import "./App.css";
 function App() {
   const [basicData, setBasicData] = useState(initBasicData);
   const [links, setLinks] = useState(initLinks);
-  //const [education, setEducation] = useState(initEducation);
+  const [education, setEducation] = useState(initEducation);
 
   const handleChangeBasic = (e) => {
     setBasicData({ ...basicData, [e.target.name]: e.target.value });
@@ -21,13 +21,21 @@ function App() {
   const handleChangeLinks = (e, mode) => {
     e.preventDefault();
     if (mode == "delete") {
-      console.log(e);
       setLinks(links.filter((link) => link.id != e.target.id));
     } else if (mode == "add") {
       const newUrl = e.target.previousElementSibling.value;
       if (newUrl) {
         setLinks([...links, { url: newUrl, id: crypto.randomUUID() }]);
       }
+    }
+  };
+
+  const handleChangeEducation = (e, mode) => {
+    e.preventDefault();
+    if (mode == "delete") {
+      setEducation(education.filter((edu) => edu.id != e.target.id));
+    } else if (mode == "add") {
+      console.log("here");
     }
   };
 
@@ -44,15 +52,16 @@ function App() {
   return (
     <div className="app-container">
       <Editor
-        data={[basicData, links]}
+        data={[basicData, links, education]}
         handleChange={[
           handleChangeBasic,
           handleChangeLinks,
+          handleChangeEducation,
           handleClearAll,
           handleReset,
         ]}
       />
-      <Preview data={[basicData, links]} />
+      <Preview data={[basicData, links, education]} />
     </div>
   );
 }
