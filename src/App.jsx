@@ -1,12 +1,18 @@
 import { useState } from "react";
 import Editor from "./components/Editor";
 import Preview from "./components/Preview";
-import { initBasicData, initLinks, clearBasicData } from "./data";
+import {
+  initBasicData,
+  initLinks,
+  //initEducation,
+  clearBasicData,
+} from "./components/data";
 import "./App.css";
 
 function App() {
   const [basicData, setBasicData] = useState(initBasicData);
   const [links, setLinks] = useState(initLinks);
+  //const [education, setEducation] = useState(initEducation);
 
   const handleChangeBasic = (e) => {
     setBasicData({ ...basicData, [e.target.name]: e.target.value });

@@ -21,3 +21,15 @@
 .editor fieldset label {
   text-align: left;
 }
+
+.editor-links > li {
+  display: flex;
+  justify-content: space-between;
+}
+
+.editor-new-link,
+.editor-new-link input {
+  margin: 0;
+  /* display: flex;
+  justify-content: space-between; */
+}

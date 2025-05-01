@@ -8,7 +8,7 @@ const Editor = ({ data, handleChange }) => {
     <div className="editor">
       <form>
         <fieldset>
-          <legend>Basic Information:</legend>
+          <legend>Basic Information</legend>
           <label htmlFor="name">Fullname: </label>
           <input
             type="text"
@@ -29,12 +29,11 @@ const Editor = ({ data, handleChange }) => {
           />
           <label htmlFor="number">Phone Number: </label>
           <input
-            type="number"
-            max={9999999999}
+            type="text"
             id="number"
             name="number"
             value={basicData.number}
-            placeholder="123456789"
+            placeholder="1234567890"
             onChange={handleChangeBasic}
           />
           <label htmlFor="location">Location: </label>
@@ -46,9 +45,18 @@ const Editor = ({ data, handleChange }) => {
             placeholder="Chicago, IL"
             onChange={handleChangeBasic}
           />
+          <label htmlFor="role">Role: </label>
+          <input
+            type="text"
+            id="role"
+            name="role"
+            value={basicData.role}
+            placeholder="Software Engineer"
+            onChange={handleChangeBasic}
+          />
         </fieldset>
 
-        <fieldset>
+        <fieldset className="editor-links">
           <legend>Links</legend>
           {links.length > 0
             ? links.map((link) => {
@@ -67,12 +75,17 @@ const Editor = ({ data, handleChange }) => {
                 );
               })
             : null}
-          <div>
-            <input type="text" />
+          <div className="editor-new-link">
+            <input type="text" name="new-link" />
             <button onClick={(e) => handleChangeLinks(e, "add")}>
               Add Link
             </button>
           </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Education</legend>
+          {}
         </fieldset>
       </form>
       <button onClick={handleReset}>Reset Example</button>

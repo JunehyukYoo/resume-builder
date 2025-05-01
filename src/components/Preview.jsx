@@ -1,4 +1,5 @@
 import "../styles/preview.css";
+import { formatPhoneNumber } from "./utils";
 
 function Preview({ data }) {
   const [basicData, links] = data;
@@ -9,10 +10,13 @@ function Preview({ data }) {
         <div className="preview-header">
           <div>
             <p>{basicData.email}</p>
-            <p>{basicData.number}</p>
+            <p>{formatPhoneNumber(basicData.number)}</p>
             <p>{basicData.location}</p>
           </div>
-          <h1 className="ed-name">{basicData.name}</h1>
+          <div>
+            <h1 className="ed-name">{basicData.name}</h1>
+            <h3>{basicData.role}</h3>
+          </div>
           <ul>
             {links.length > 0 &&
               links.map((link) => {
