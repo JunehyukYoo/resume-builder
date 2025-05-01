@@ -35,18 +35,33 @@ function App() {
     if (mode == "delete") {
       setEducation(education.filter((edu) => edu.id != e.target.id));
     } else if (mode == "add") {
-      console.log("here");
+      setEducation([
+        ...education,
+        {
+          id: crypto.randomUUID(),
+          school: "Untitled",
+          degree: "",
+          major: "",
+          gpa: "",
+          startDate: "",
+          completed: false,
+          endDate: "",
+          relevantCoursework: [],
+        },
+      ]);
     }
   };
 
   const handleClearAll = () => {
     setBasicData(clearBasicData);
     setLinks([]);
+    setEducation([]);
   };
 
   const handleReset = () => {
     setBasicData(initBasicData);
     setLinks(initLinks);
+    setEducation(initEducation);
   };
 
   return (

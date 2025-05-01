@@ -1,6 +1,9 @@
+import { useState } from "react";
 import "../styles/editor.css";
+import { EducationFormItem } from "./Items";
 
 const Editor = ({ data, handleChange }) => {
+  const [activeEduIdx, setActiveEduIdx] = useState(-1);
   const [basicData, links, education] = data;
   const [
     handleChangeBasic,
@@ -9,6 +12,7 @@ const Editor = ({ data, handleChange }) => {
     handleClearAll,
     handleReset,
   ] = handleChange;
+
   return (
     <div className="editor">
       <form>
@@ -93,20 +97,19 @@ const Editor = ({ data, handleChange }) => {
           {education.length > 0 &&
             education.map((edu) => {
               return (
-                <div key={edu.id}>
-                  {edu.school}
-                  <span>
-                    <button
-                      id={edu.id}
-                      onClick={(e) => handleChangeEducation(e, "delete")}
-                    >
-                      X
-                    </button>
-                  </span>
-                </div>
+                <EducationFormItem
+                  key={edu.id}
+                  edu={edu}
+                  handleChange={[handleChangeEducation, setActiveEduIdx]}
+                  isActive={activeEduIdx == edu.id}
+                />
               );
             })}
-          <button>Add Education</button>
+          {activeEduIdx == -1 && (
+            <button onClick={(e) => handleChangeEducation(e, "add")}>
+              Add Education
+            </button>
+          )}
         </fieldset>
       </form>
       <button onClick={handleReset}>Reset Example</button>
