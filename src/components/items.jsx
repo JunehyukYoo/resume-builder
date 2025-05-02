@@ -40,16 +40,16 @@ export function EducationItem({ edu }) {
 export function EducationFormItem({ isActive, edu, handleChange }) {
   const [handleChangeEducation, setActiveEduIdx] = handleChange;
   return !isActive ? (
-    <div key={edu.id}>
+    <div
+      key={edu.id}
+      id={edu.id}
+      onClick={(e) => setActiveEduIdx(e.target.id)}
+      className="inactive-edu"
+    >
       {edu.school}
-      <span>
-        <button id={edu.id} onClick={(e) => setActiveEduIdx(e.target.id)}>
-          Edit
-        </button>
-      </span>
     </div>
   ) : (
-    <div id={edu.id} style={{ display: "flex", flexDirection: "column" }}>
+    <div id={edu.id} className="active-edu">
       <label htmlFor="school">School:</label>
       <input
         type="text"

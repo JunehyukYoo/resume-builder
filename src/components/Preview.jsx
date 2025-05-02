@@ -1,6 +1,6 @@
 import "../styles/preview.css";
 import { formatPhoneNumber } from "./utils";
-import { EducationItem } from "./Items";
+import { EducationItem } from "./items";
 
 function Preview({ data }) {
   const [basicData, links, education] = data;
@@ -9,7 +9,8 @@ function Preview({ data }) {
     <>
       <div className="preview">
         <div className="preview-header">
-          <div>
+          <div style={{ textAlign: "left" }}>
+            <h4>Contact</h4>
             <p>{basicData.email}</p>
             <p>{formatPhoneNumber(basicData.number)}</p>
             <p>{basicData.location}</p>
@@ -18,7 +19,8 @@ function Preview({ data }) {
             <h1 className="ed-name">{basicData.name}</h1>
             <h2>{basicData.role}</h2>
           </div>
-          <ul>
+          <ul style={{ textAlign: "left" }}>
+            <h4>Links</h4>
             {links.length > 0 &&
               links.map((link) => {
                 return <li key={link.id}>{link.url}</li>;

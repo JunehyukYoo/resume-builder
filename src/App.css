@@ -3,6 +3,10 @@
   padding: 0;
   box-sizing: border-box;
   font-family: Calibri, "Times New Roman";
+
+  --border-color: rgb(88, 88, 88);
+  --border-radius: 10px;
+  --secondary-color: rgba(250, 235, 215, 1);
 }
 
 #root {

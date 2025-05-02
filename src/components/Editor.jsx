@@ -1,6 +1,6 @@
 import { useState } from "react";
 import "../styles/editor.css";
-import { EducationFormItem } from "./Items";
+import { EducationFormItem } from "./items";
 
 const Editor = ({ data, handleChange }) => {
   const [activeEduIdx, setActiveEduIdx] = useState(-1);
@@ -65,12 +65,12 @@ const Editor = ({ data, handleChange }) => {
           />
         </fieldset>
 
-        <fieldset className="editor-links">
+        <fieldset>
           <legend>Links</legend>
           {links.length > 0
             ? links.map((link) => {
                 return (
-                  <li key={link.id}>
+                  <li key={link.id} className="editor-link">
                     {link.url}{" "}
                     <span>
                       <button
