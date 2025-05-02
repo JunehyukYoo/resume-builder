@@ -30,7 +30,7 @@ export const initEducation = [
     startDate: "8/2025",
     completed: false,
     endDate: "5/2027",
-    relevantCoursework: [],
+    relevantCoursework: ["Machine Learning", "Neural Networks"],
   },
   {
     id: crypto.randomUUID(),
@@ -41,6 +41,11 @@ export const initEducation = [
     startDate: "8/2020",
     completed: true,
     endDate: "5/2024",
-    relevantCoursework: [],
+    relevantCoursework: [
+      "Distributed Systems",
+      "Algorithms",
+      "Models of Computation",
+      "Computer Architecture",
+    ],
   },
 ];

@@ -20,9 +20,9 @@ function App() {
 
   const handleChangeLinks = (e, mode) => {
     e.preventDefault();
-    if (mode == "delete") {
+    if (mode === "delete") {
       setLinks(links.filter((link) => link.id != e.target.id));
-    } else if (mode == "add") {
+    } else if (mode === "add") {
       const newUrl = e.target.previousElementSibling.value;
       if (newUrl) {
         setLinks([...links, { url: newUrl, id: crypto.randomUUID() }]);
@@ -32,9 +32,9 @@ function App() {
 
   const handleChangeEducation = (e, mode) => {
     e.preventDefault();
-    if (mode == "delete") {
+    if (mode === "delete") {
       setEducation(education.filter((edu) => edu.id != e.target.id));
-    } else if (mode == "add") {
+    } else if (mode === "add") {
       setEducation([
         ...education,
         {
@@ -49,6 +49,15 @@ function App() {
           relevantCoursework: [],
         },
       ]);
+    } else {
+      const thisId = e.target.parentElement.id;
+      const thisKey = e.target.name;
+      const thisValue = e.target.value;
+      setEducation(
+        education.map((edu) =>
+          edu.id === thisId ? { ...edu, [thisKey]: thisValue } : edu
+        )
+      );
     }
   };
 
