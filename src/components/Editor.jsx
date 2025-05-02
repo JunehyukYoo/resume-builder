@@ -1,14 +1,16 @@
 import { useState } from "react";
 import "../styles/editor.css";
-import { EducationFormItem } from "./items";
+import { EducationFormItem, ExperienceFormItem } from "../items";
 
 const Editor = ({ data, handleChange }) => {
   const [activeEduIdx, setActiveEduIdx] = useState(-1);
-  const [basicData, links, education] = data;
+  const [activeExpIdx, setActiveExpIdx] = useState(-1);
+  const [basicData, links, education, experience] = data;
   const [
     handleChangeBasic,
     handleChangeLinks,
     handleChangeEducation,
+    handleChangeExperience,
     handleClearAll,
     handleReset,
   ] = handleChange;
@@ -112,6 +114,24 @@ const Editor = ({ data, handleChange }) => {
             })}
           <button onClick={(e) => handleChangeEducation(e, "add")}>
             Add Education
+          </button>
+        </fieldset>
+
+        <fieldset>
+          <legend>Experience</legend>
+          {experience.length > 0 &&
+            experience.map((exp) => {
+              return (
+                <ExperienceFormItem
+                  key={exp.id}
+                  exp={exp}
+                  handleChange={[handleChangeExperience, setActiveExpIdx]}
+                  isActive={activeExpIdx == exp.id}
+                />
+              );
+            })}
+          <button onClick={(e) => handleChangeExperience(e, "add")}>
+            Add Experience
           </button>
         </fieldset>
       </form>

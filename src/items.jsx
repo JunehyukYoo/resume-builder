@@ -16,23 +16,64 @@ export function EducationItem({ edu }) {
           width: "100%",
         }}
       >
-        <p style={{ fontSize: "20px" }}>{edu.school}</p>
+        <h6 style={{ fontSize: "20px" }}>{edu.school}</h6>
         <p style={{ fontSize: "16px" }}>
-          {formatDates(edu.startDate, edu.endDate, edu.completed)}
+          {edu.school === "Untitled"
+            ? "From - To"
+            : formatDates(edu.startDate, edu.endDate)}
         </p>
       </div>
-      {!(edu.school === "Untitled") && (
+      {edu.school !== "Untitled" && (
         <div
           style={{
-            fontSize: "0.8rem",
             textAlign: "left",
           }}
         >
           <p>
             {edu.degree} in {edu.major}
           </p>
-          <p>{`GPA: ${edu.gpa}`}</p>
-          <p>{`Relevant Coursework: ${edu.relevantCoursework}`}</p>
+          <p>
+            {`GPA: ${edu.gpa}`}
+            <br />
+            {`Relevant Coursework: ${edu.relevantCoursework}`}
+          </p>
+        </div>
+      )}
+    </div>
+  );
+}
+
+export function ExperienceItem({ exp }) {
+  return (
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "flex-start",
+      }}
+    >
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+          width: "100%",
+        }}
+      >
+        <h6 style={{ fontSize: "20px" }}>{exp.company}</h6>
+        <p style={{ fontSize: "16px" }}>
+          {exp.company === "Untitled"
+            ? "From - To"
+            : formatDates(exp.startDate, exp.endDate)}
+        </p>
+      </div>
+      {!(exp.compay === "Untitled") && (
+        <div
+          style={{
+            textAlign: "left",
+          }}
+        >
+          <p>{exp.title}</p>
+          <p>{exp.description}</p>
         </div>
       )}
     </div>
@@ -120,6 +161,82 @@ export function EducationFormItem({ isActive, edu, handleChange }) {
           Close
         </button>
         <button id={edu.id} onClick={(e) => handleChangeEducation(e, "delete")}>
+          Delete
+        </button>
+      </div>
+    </div>
+  );
+}
+
+export function ExperienceFormItem({ isActive, exp, handleChange }) {
+  const [handleChangeExperience, setActiveExpIdx] = handleChange;
+  return !isActive ? (
+    <div
+      key={exp.id}
+      id={exp.id}
+      onClick={(e) => setActiveExpIdx(e.target.id)}
+      className="inactive-exp"
+    >
+      {exp.company}
+    </div>
+  ) : (
+    <div id={exp.id} className="active-exp">
+      <label htmlFor="company">Company:</label>
+      <input
+        type="text"
+        name="company"
+        id="company"
+        value={exp.company}
+        onChange={handleChangeExperience}
+      ></input>
+      <label htmlFor="title">Title:</label>
+      <input
+        type="text"
+        name="title"
+        id="title"
+        value={exp.title}
+        onChange={handleChangeExperience}
+      ></input>
+      <label htmlFor="location">Location:</label>
+      <input
+        type="text"
+        name="location"
+        id="location"
+        value={exp.location}
+        onChange={handleChangeExperience}
+      ></input>
+      <label htmlFor="startDate">Start Date:</label>
+      <input
+        type="date"
+        name="startDate"
+        id="startDate"
+        value={exp.startDate}
+        onChange={handleChangeExperience}
+      ></input>
+      <label htmlFor="endDate">End Date:</label>
+      <input
+        type="date"
+        name="endDate"
+        id="endDate"
+        value={exp.endDate}
+        onChange={handleChangeExperience}
+      ></input>
+      <label htmlFor="description">Description:</label>
+      <textarea
+        name="description"
+        id="description"
+        value={exp.description}
+        onChange={handleChangeExperience}
+        style={{ resize: "none", height: "100px" }}
+      ></textarea>
+      <div>
+        <button id={exp.id} onClick={() => setActiveExpIdx(-1)}>
+          Close
+        </button>
+        <button
+          id={exp.id}
+          onClick={(e) => handleChangeExperience(e, "delete")}
+        >
           Delete
         </button>
       </div>

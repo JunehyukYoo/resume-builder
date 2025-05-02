@@ -5,6 +5,7 @@ import {
   initBasicData,
   initLinks,
   initEducation,
+  initExperience,
   clearBasicData,
 } from "./components/data";
 import "./App.css";
@@ -13,6 +14,7 @@ function App() {
   const [basicData, setBasicData] = useState(initBasicData);
   const [links, setLinks] = useState(initLinks);
   const [education, setEducation] = useState(initEducation);
+  const [experience, setExperience] = useState(initExperience);
 
   const handleChangeBasic = (e) => {
     setBasicData({ ...basicData, [e.target.name]: e.target.value });
@@ -61,31 +63,63 @@ function App() {
     }
   };
 
+  const handleChangeExperience = (e, mode) => {
+    e.preventDefault();
+    if (mode === "delete") {
+      setExperience(experience.filter((exp) => exp.id != e.target.id));
+    } else if (mode === "add") {
+      setExperience([
+        ...experience,
+        {
+          id: crypto.randomUUID(),
+          company: "Untitled",
+          title: "",
+          location: "",
+          startDate: "",
+          endDate: "",
+          description: "",
+        },
+      ]);
+    } else {
+      const thisId = e.target.parentElement.id;
+      const thisKey = e.target.name;
+      const thisValue = e.target.value;
+      setExperience(
+        experience.map((exp) =>
+          exp.id === thisId ? { ...exp, [thisKey]: thisValue } : exp
+        )
+      );
+    }
+  };
+
   const handleClearAll = () => {
     setBasicData(clearBasicData);
     setLinks([]);
     setEducation([]);
+    setExperience([]);
   };
 
   const handleReset = () => {
     setBasicData(initBasicData);
     setLinks(initLinks);
     setEducation(initEducation);
+    setExperience(initExperience);
   };
 
   return (
     <div className="app-container">
       <Editor
-        data={[basicData, links, education]}
+        data={[basicData, links, education, experience]}
         handleChange={[
           handleChangeBasic,
           handleChangeLinks,
           handleChangeEducation,
+          handleChangeExperience,
           handleClearAll,
           handleReset,
         ]}
       />
-      <Preview data={[basicData, links, education]} />
+      <Preview data={[basicData, links, education, experience]} />
     </div>
   );
 }

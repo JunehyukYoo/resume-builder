@@ -16,6 +16,13 @@
 .editor fieldset {
   display: flex;
   flex-direction: column;
+  border: 2px solid var(--border-color);
+  border-radius: var(--border-radius);
+}
+
+.editor fieldset legend {
+  font-weight: bold;
+  font-size: 1.2rem;
 }
 
 .editor fieldset label {
@@ -37,7 +44,8 @@
   margin: 0;
 }
 
-.active-edu {
+.active-edu,
+.active-exp {
   display: flex;
   flex-direction: column;
   padding: 10px;
@@ -45,13 +53,15 @@
   border-radius: var(--border-radius);
 }
 
-.inactive-edu {
+.inactive-edu,
+.inactive-exp {
   border: 2px solid var(--border-color);
   border-radius: var(--border-radius);
   transition: background-color 0.3s ease;
 }
 
-.inactive-edu:hover {
+.inactive-edu:hover,
+.inactive-exp:hover {
   cursor: pointer;
   background-color: var(--secondary-color);
 }

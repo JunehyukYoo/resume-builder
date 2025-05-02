@@ -1,9 +1,9 @@
 import "../styles/preview.css";
-import { formatPhoneNumber } from "./utils";
-import { EducationItem } from "./items";
+import { formatPhoneNumber } from "../utils";
+import { EducationItem, ExperienceItem } from "../items";
 
 function Preview({ data }) {
-  const [basicData, links, education] = data;
+  const [basicData, links, education, experience] = data;
 
   return (
     <>
@@ -35,7 +35,8 @@ function Preview({ data }) {
         <hr></hr>
         <h2 style={{ textAlign: "left" }}>Experience</h2>
         <hr></hr>
-        <p>ADD MORE STUFF HERE</p>
+        {experience.length > 0 &&
+          experience.map((exp) => <ExperienceItem key={exp.id} exp={exp} />)}
       </div>
     </>
   );
