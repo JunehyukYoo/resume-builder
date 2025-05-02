@@ -73,15 +73,14 @@ const Editor = ({ data, handleChange }) => {
             ? links.map((link) => {
                 return (
                   <li key={link.id} className="editor-link">
-                    {link.url}{" "}
-                    <span>
-                      <button
-                        id={link.id}
-                        onClick={(e) => handleChangeLinks(e, "delete")}
-                      >
-                        Delete
-                      </button>
-                    </span>
+                    {link.url}
+
+                    <button
+                      id={link.id}
+                      onClick={(e) => handleChangeLinks(e, "delete")}
+                    >
+                      Delete
+                    </button>
                   </li>
                 );
               })
@@ -89,6 +88,7 @@ const Editor = ({ data, handleChange }) => {
           <div className="editor-new-link">
             <input type="text" name="new-link" />
             <button
+              style={{ margin: 0, fontSize: "0.75rem" }}
               onClick={(e) => {
                 handleChangeLinks(e, "add");
                 e.target.previousElementSibling.value = "";
@@ -133,6 +133,18 @@ const Editor = ({ data, handleChange }) => {
           <button onClick={(e) => handleChangeExperience(e, "add")}>
             Add Experience
           </button>
+        </fieldset>
+
+        <fieldset>
+          <legend>Skills</legend>
+          <label htmlFor="skills">Skills: </label>
+          <textarea
+            id="skills"
+            name="skills"
+            value={basicData.skills}
+            placeholder="JavaScript, React, Node.js"
+            onChange={handleChangeBasic}
+          />
         </fieldset>
       </form>
       <button onClick={handleReset}>Reset Example</button>

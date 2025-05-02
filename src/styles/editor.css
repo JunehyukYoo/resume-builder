@@ -1,12 +1,11 @@
 .editor {
-  margin: 1rem;
   padding: 10px;
   min-width: 400px;
   text-align: center;
-  border: 3px solid rgb(80, 90, 90);
-  background-color: rgb(255, 255, 255);
+  /* border: 0 solid var(--border-color); */
+  background-color: var(--bg-color);
   max-width: 30vw;
-  border-radius: 20px;
+  /* border-radius: 20px; */
 }
 
 .editor * {
@@ -14,10 +13,14 @@
 }
 
 .editor fieldset {
+  padding: 10px 0;
   display: flex;
+  color: white;
   flex-direction: column;
-  border: 2px solid var(--border-color);
+  background-color: var(--fs-bg-color);
+  border: 0 solid var(--border-color);
   border-radius: var(--border-radius);
+  gap: 4px;
 }
 
 .editor fieldset legend {
@@ -29,19 +32,44 @@
   text-align: left;
 }
 
+.editor input {
+  background-color: var(--input-bg-color);
+  border: 0 solid var(--border-color);
+  border-radius: var(--border-radius);
+  padding: 5px;
+}
+
 .editor-link {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding-left: 1rem;
+  background-color: var(--input-bg-color);
+  border: 0 solid var(--border-color);
+  border-radius: var(--border-radius);
 }
 
 .editor-link button {
   margin: 0;
 }
 
-.editor-new-link,
-.editor-new-link input {
+.editor-new-link {
+  display: flex;
+  justify-content: space-between;
+  background-color: var(--input-bg-color);
+  border-radius: var(--border-radius);
+}
+
+.editor-new-link > * {
   margin: 0;
+}
+
+.editor-new-link input {
+  flex: 1;
+}
+
+.editor-new-link input:focus {
+  outline: none;
 }
 
 .active-edu,
@@ -49,13 +77,20 @@
   display: flex;
   flex-direction: column;
   padding: 10px;
-  border: 2px solid var(--border-color);
+  background-color: var(--input-bg-color);
+  border: 0 solid var(--border-color);
   border-radius: var(--border-radius);
+}
+
+.active-edu input,
+.active-exp input {
+  background-color: var(--fs-bg-color);
 }
 
 .inactive-edu,
 .inactive-exp {
-  border: 2px solid var(--border-color);
+  background-color: var(--input-bg-color);
+  border: 0 solid var(--border-color);
   border-radius: var(--border-radius);
   transition: background-color 0.3s ease;
 }
@@ -63,5 +98,5 @@
 .inactive-edu:hover,
 .inactive-exp:hover {
   cursor: pointer;
-  background-color: var(--secondary-color);
+  background-color: hsl(from var(--hover-color) h s 35%);
 }

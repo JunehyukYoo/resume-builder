@@ -154,7 +154,6 @@ export function EducationFormItem({ isActive, edu, handleChange }) {
         id="relevantCoursework"
         value={edu.relevantCoursework}
         onChange={handleChangeEducation}
-        style={{ resize: "none", height: "100px" }}
       ></textarea>
       <div>
         <button id={edu.id} onClick={() => setActiveEduIdx(-1)}>

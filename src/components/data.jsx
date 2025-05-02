@@ -66,3 +66,27 @@ export const initExperience = [
       "Developed features for Microsoft Teams and improved performance of existing features.",
   },
 ];
+
+const initProjects = [
+  {
+    id: crypto.randomUUID(),
+    title: "Personal Portfolio",
+    description:
+      "A personal portfolio website to showcase my projects and skills.",
+    skillsUsed: "HTML, CSS, JavaScript, React",
+  },
+  {
+    id: crypto.randomUUID(),
+    title: "Weather App",
+    description:
+      "A weather application that provides real-time weather updates.",
+    skillsUsed: "HTML, CSS, JavaScript, React, API Integration",
+  },
+  {
+    id: crypto.randomUUID(),
+    title: "E-commerce Website",
+    description:
+      "An e-commerce website with a shopping cart and payment integration.",
+    skillsUsed: "HTML, CSS, JavaScript, React, Node.js, MongoDB",
+  },
+];
