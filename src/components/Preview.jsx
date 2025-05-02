@@ -3,7 +3,7 @@ import { formatPhoneNumber } from "../utils";
 import { EducationItem, ExperienceItem } from "../items";
 
 function Preview({ data }) {
-  const [basicData, links, education, experience] = data;
+  const [basicData, links, education, experience, skills] = data;
 
   return (
     <>
@@ -37,6 +37,11 @@ function Preview({ data }) {
         <hr></hr>
         {experience.length > 0 &&
           experience.map((exp) => <ExperienceItem key={exp.id} exp={exp} />)}
+        <hr></hr>
+        <h2 style={{ textAlign: "left" }}>Skills</h2>
+        <hr></hr>
+        {skills.length > 0 &&
+          skills.map((skill) => <p key={skill.id}>{skill.name}</p>)}
       </div>
     </>
   );

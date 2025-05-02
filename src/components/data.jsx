@@ -90,3 +90,12 @@ const initProjects = [
     skillsUsed: "HTML, CSS, JavaScript, React, Node.js, MongoDB",
   },
 ];
+
+export const initSkills = [
+  { name: "JavaScript", id: crypto.randomUUID() },
+  { name: "React", id: crypto.randomUUID() },
+  { name: "Node.js", id: crypto.randomUUID() },
+  { name: "Python", id: crypto.randomUUID() },
+  { name: "Java", id: crypto.randomUUID() },
+  { name: "C++", id: crypto.randomUUID() },
+];

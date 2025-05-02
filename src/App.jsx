@@ -6,6 +6,7 @@ import {
   initLinks,
   initEducation,
   initExperience,
+  initSkills,
   clearBasicData,
 } from "./components/data";
 import "./App.css";
@@ -15,6 +16,7 @@ function App() {
   const [links, setLinks] = useState(initLinks);
   const [education, setEducation] = useState(initEducation);
   const [experience, setExperience] = useState(initExperience);
+  const [skills, setSkills] = useState(initSkills);
 
   const handleChangeBasic = (e) => {
     setBasicData({ ...basicData, [e.target.name]: e.target.value });
@@ -28,6 +30,18 @@ function App() {
       const newUrl = e.target.previousElementSibling.value;
       if (newUrl) {
         setLinks([...links, { url: newUrl, id: crypto.randomUUID() }]);
+      }
+    }
+  };
+
+  const handleChangeSkills = (e, mode) => {
+    e.preventDefault();
+    if (mode === "delete") {
+      setSkills(skills.filter((skill) => skill.id != e.target.id));
+    } else if (mode === "add") {
+      const newSkill = e.target.previousElementSibling.value;
+      if (newSkill) {
+        setSkills([...skills, { name: newSkill, id: crypto.randomUUID() }]);
       }
     }
   };
@@ -97,6 +111,7 @@ function App() {
     setLinks([]);
     setEducation([]);
     setExperience([]);
+    setSkills([]);
   };
 
   const handleReset = () => {
@@ -104,22 +119,24 @@ function App() {
     setLinks(initLinks);
     setEducation(initEducation);
     setExperience(initExperience);
+    setSkills(initSkills);
   };
 
   return (
     <div className="app-container">
       <Editor
-        data={[basicData, links, education, experience]}
+        data={[basicData, links, education, experience, skills]}
         handleChange={[
           handleChangeBasic,
           handleChangeLinks,
           handleChangeEducation,
           handleChangeExperience,
+          handleChangeSkills,
           handleClearAll,
           handleReset,
         ]}
       />
-      <Preview data={[basicData, links, education, experience]} />
+      <Preview data={[basicData, links, education, experience, skills]} />
     </div>
   );
 }

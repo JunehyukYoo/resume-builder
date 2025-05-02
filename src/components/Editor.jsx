@@ -5,12 +5,13 @@ import { EducationFormItem, ExperienceFormItem } from "../items";
 const Editor = ({ data, handleChange }) => {
   const [activeEduIdx, setActiveEduIdx] = useState(-1);
   const [activeExpIdx, setActiveExpIdx] = useState(-1);
-  const [basicData, links, education, experience] = data;
+  const [basicData, links, education, experience, skills] = data;
   const [
     handleChangeBasic,
     handleChangeLinks,
     handleChangeEducation,
     handleChangeExperience,
+    handleChangeSkills,
     handleClearAll,
     handleReset,
   ] = handleChange;
@@ -137,8 +138,23 @@ const Editor = ({ data, handleChange }) => {
 
         <fieldset>
           <legend>Skills</legend>
-          <label htmlFor="skills">Skills: </label>
-          <textarea
+          {skills.length > 0
+            ? skills.map((skill) => {
+                return (
+                  <li key={skill.id} className="editor-link">
+                    {skill.name}
+                    <button
+                      id={skill.id}
+                      onClick={(e) => handleChangeSkills(e, "delete")}
+                    >
+                      Delete
+                    </button>
+                  </li>
+                );
+              })
+            : null}
+          <input
+            type="text"
             id="skills"
             name="skills"
             value={basicData.skills}
