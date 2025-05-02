@@ -46,7 +46,7 @@ function App() {
           startDate: "",
           completed: false,
           endDate: "",
-          relevantCoursework: [],
+          relevantCoursework: "",
         },
       ]);
     } else {

@@ -8,3 +8,22 @@ export function formatPhoneNumber(input) {
   }
   return str;
 }
+
+export function formatDates(startDate, endDate, completed) {
+  const start = new Date(startDate);
+  const end = new Date(endDate);
+  const options = { year: "numeric", month: "short" };
+  const startDateString = start.toLocaleDateString("en-US", options);
+  const endDateString = end.toLocaleDateString("en-US", options);
+  if (completed) {
+    const toReturn =
+      start.getFullYear() === end.getFullYear()
+        ? `${start.toLocaleDateString("en-US", {
+            month: "short",
+          })} - ${endDateString}`
+        : `${startDateString} - ${endDateString}`;
+    return toReturn;
+  } else {
+    return `${startDateString} - Present`;
+  }
+}

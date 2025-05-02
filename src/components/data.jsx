@@ -27,10 +27,10 @@ export const initEducation = [
     degree: "M.S.",
     major: "Computer Science",
     gpa: "3.50",
-    startDate: "8/2025",
+    startDate: "2024-08-16",
     completed: false,
-    endDate: "5/2027",
-    relevantCoursework: ["Machine Learning", "Neural Networks"],
+    endDate: "2026-05-13",
+    relevantCoursework: "Machine Learning, Neural Networks",
   },
   {
     id: crypto.randomUUID(),
@@ -38,14 +38,10 @@ export const initEducation = [
     degree: "B.S.",
     major: "Computer Science",
     gpa: "3.80",
-    startDate: "8/2020",
+    startDate: "2020-08-16",
     completed: true,
-    endDate: "5/2024",
-    relevantCoursework: [
-      "Distributed Systems",
-      "Algorithms",
-      "Models of Computation",
-      "Computer Architecture",
-    ],
+    endDate: "2024-05-13",
+    relevantCoursework:
+      "Distributed Systems, Algorithms, Models of Computation, Computer Architecture",
   },
 ];

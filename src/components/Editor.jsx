@@ -86,7 +86,12 @@ const Editor = ({ data, handleChange }) => {
             : null}
           <div className="editor-new-link">
             <input type="text" name="new-link" />
-            <button onClick={(e) => handleChangeLinks(e, "add")}>
+            <button
+              onClick={(e) => {
+                handleChangeLinks(e, "add");
+                e.target.previousElementSibling.value = "";
+              }}
+            >
               Add Link
             </button>
           </div>
@@ -105,11 +110,9 @@ const Editor = ({ data, handleChange }) => {
                 />
               );
             })}
-          {activeEduIdx == -1 && (
-            <button onClick={(e) => handleChangeEducation(e, "add")}>
-              Add Education
-            </button>
-          )}
+          <button onClick={(e) => handleChangeEducation(e, "add")}>
+            Add Education
+          </button>
         </fieldset>
       </form>
       <button onClick={handleReset}>Reset Example</button>

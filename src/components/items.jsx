@@ -1,3 +1,5 @@
+import { formatDates } from "./utils";
+
 export function EducationItem({ edu }) {
   return (
     <div
@@ -16,7 +18,7 @@ export function EducationItem({ edu }) {
       >
         <p style={{ fontSize: "20px" }}>{edu.school}</p>
         <p style={{ fontSize: "16px" }}>
-          {edu.startDate} – {edu.endDate}
+          {formatDates(edu.startDate, edu.endDate, edu.completed)}
         </p>
       </div>
       {!(edu.school === "Untitled") && (
@@ -30,7 +32,7 @@ export function EducationItem({ edu }) {
             {edu.degree} in {edu.major}
           </p>
           <p>{`GPA: ${edu.gpa}`}</p>
-          <p>Relevant Coursework: {edu.relevantCoursework.join(", ")}</p>
+          <p>{`Relevant Coursework: ${edu.relevantCoursework}`}</p>
         </div>
       )}
     </div>
@@ -73,6 +75,14 @@ export function EducationFormItem({ isActive, edu, handleChange }) {
         <option value="M.A.">Bachelors of Arts</option>
         <option value="Ph.D.">Doctorate</option>
       </select>
+      <label htmlFor="major">Major:</label>
+      <input
+        type="text"
+        name="major"
+        id="major"
+        value={edu.major}
+        onChange={handleChangeEducation}
+      ></input>
       <label htmlFor="gpa">GPA:</label>
       <input
         type="text"
@@ -81,6 +91,30 @@ export function EducationFormItem({ isActive, edu, handleChange }) {
         value={edu.gpa}
         onChange={handleChangeEducation}
       ></input>
+      <label htmlFor="startDate">Start Date:</label>
+      <input
+        type="date"
+        name="startDate"
+        id="startDate"
+        value={edu.startDate}
+        onChange={handleChangeEducation}
+      ></input>
+      <label htmlFor="endDate">End Date:</label>
+      <input
+        type="date"
+        name="endDate"
+        id="endDate"
+        value={edu.endDate}
+        onChange={handleChangeEducation}
+      ></input>
+      <label htmlFor="relevantCoursework">Relevant Coursework:</label>
+      <textarea
+        name="relevantCoursework"
+        id="relevantCoursework"
+        value={edu.relevantCoursework}
+        onChange={handleChangeEducation}
+        style={{ resize: "none", height: "100px" }}
+      ></textarea>
       <div>
         <button id={edu.id} onClick={() => setActiveEduIdx(-1)}>
           Close

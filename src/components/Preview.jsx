@@ -28,12 +28,12 @@ function Preview({ data }) {
           </ul>
         </div>
         <hr></hr>
-        <h3 style={{ textAlign: "left" }}>Education</h3>
+        <h2 style={{ textAlign: "left" }}>Education</h2>
         <hr></hr>
         {education.length > 0 &&
           education.map((edu) => <EducationItem key={edu.id} edu={edu} />)}
         <hr></hr>
-        <h3 style={{ textAlign: "left" }}>Experience</h3>
+        <h2 style={{ textAlign: "left" }}>Experience</h2>
         <hr></hr>
         <p>ADD MORE STUFF HERE</p>
       </div>
