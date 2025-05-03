@@ -1,4 +1,4 @@
-import { formatDates } from "./utils";
+import { formatDates } from "../utils";
 
 export function EducationItem({ edu }) {
   return (
@@ -80,6 +80,30 @@ export function ExperienceItem({ exp }) {
   );
 }
 
+export function ProjectItem({ proj }) {
+  return (
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "flex-start",
+      }}
+    >
+      <h6 style={{ fontSize: "20px" }}>{proj.title}</h6>
+      {proj.title !== "Untitled" && (
+        <div
+          style={{
+            textAlign: "left",
+          }}
+        >
+          <p>{proj.description}</p>
+          <p>{`Skills used: ${proj.skillsUsed}`}</p>
+        </div>
+      )}
+    </div>
+  );
+}
+
 export function EducationFormItem({ isActive, edu, handleChange }) {
   const [handleChangeEducation, setActiveEduIdx] = handleChange;
   return !isActive ? (
@@ -155,7 +179,14 @@ export function EducationFormItem({ isActive, edu, handleChange }) {
         value={edu.relevantCoursework}
         onChange={handleChangeEducation}
       ></textarea>
-      <div>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          gap: "10px",
+          marginTop: "10px",
+        }}
+      >
         <button id={edu.id} onClick={() => setActiveEduIdx(-1)}>
           Close
         </button>
@@ -228,13 +259,131 @@ export function ExperienceFormItem({ isActive, exp, handleChange }) {
         onChange={handleChangeExperience}
         style={{ resize: "none", height: "100px" }}
       ></textarea>
-      <div>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          gap: "10px",
+          marginTop: "10px",
+        }}
+      >
         <button id={exp.id} onClick={() => setActiveExpIdx(-1)}>
           Close
         </button>
         <button
           id={exp.id}
           onClick={(e) => handleChangeExperience(e, "delete")}
+        >
+          Delete
+        </button>
+      </div>
+    </div>
+  );
+}
+
+export function ProjectFormItem({ isActive, proj, handleChange }) {
+  const [handleChangeProjects, setActiveProjIdx] = handleChange;
+  return !isActive ? (
+    <div
+      key={proj.id}
+      id={proj.id}
+      onClick={(e) => setActiveProjIdx(e.target.id)}
+      className="inactive-proj"
+    >
+      {proj.title}
+    </div>
+  ) : (
+    <div id={proj.id} className="active-proj">
+      <label htmlFor="title">Title:</label>
+      <input
+        type="text"
+        name="title"
+        id="title"
+        value={proj.title}
+        onChange={handleChangeProjects}
+      ></input>
+      <label htmlFor="description">Description:</label>
+      <textarea
+        name="description"
+        id="description"
+        value={proj.description}
+        onChange={handleChangeProjects}
+        style={{ resize: "none", height: "100px" }}
+      ></textarea>
+      <label htmlFor="skillsUsed">Skills Used:</label>
+      <input
+        type="text"
+        name="skillsUsed"
+        id="skillsUsed"
+        value={proj.skillsUsed}
+        onChange={handleChangeProjects}
+      ></input>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          gap: "10px",
+          marginTop: "10px",
+        }}
+      >
+        <button id={proj.id} onClick={() => setActiveProjIdx(-1)}>
+          Close
+        </button>
+        <button id={proj.id} onClick={(e) => handleChangeProjects(e, "delete")}>
+          Delete
+        </button>
+      </div>
+    </div>
+  );
+}
+
+export function LanguageFormItem({ isActive, lang, handleChange }) {
+  const [handleChangeLanguages, setActiveLangIdx] = handleChange;
+  return !isActive ? (
+    <div
+      key={lang.id}
+      id={lang.id}
+      onClick={(e) => setActiveLangIdx(e.target.id)}
+      className="inactive-lang"
+    >
+      {lang.language}
+    </div>
+  ) : (
+    <div id={lang.id} className="active-lang">
+      <label htmlFor="language">Language:</label>
+      <input
+        type="text"
+        name="language"
+        id="language"
+        value={lang.language}
+        onChange={handleChangeLanguages}
+      ></input>
+      <label htmlFor="proficiency">Proficiency:</label>
+      <select
+        name="proficiency"
+        id="proficiency"
+        value={lang.proficiency}
+        onChange={handleChangeLanguages}
+      >
+        <option value="1">Basic</option>
+        <option value="2">Conversational</option>
+        <option value="3">Fluent</option>
+        <option value="4">Native</option>
+      </select>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          gap: "10px",
+          marginTop: "10px",
+        }}
+      >
+        <button id={lang.id} onClick={() => setActiveLangIdx(-1)}>
+          Close
+        </button>
+        <button
+          id={lang.id}
+          onClick={(e) => handleChangeLanguages(e, "delete")}
         >
           Delete
         </button>

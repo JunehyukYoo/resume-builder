@@ -1,24 +1,38 @@
 import { useState } from "react";
 import "../styles/editor.css";
-import { EducationFormItem, ExperienceFormItem } from "../items";
+import {
+  EducationFormItem,
+  ExperienceFormItem,
+  ProjectFormItem,
+  LanguageFormItem,
+} from "./items";
 
 const Editor = ({ data, handleChange }) => {
   const [activeEduIdx, setActiveEduIdx] = useState(-1);
   const [activeExpIdx, setActiveExpIdx] = useState(-1);
-  const [basicData, links, education, experience, skills] = data;
+  const [activeProjIdx, setActiveProjIdx] = useState(-1);
+  const [activeLangIdx, setActiveLangIdx] = useState(-1);
+  const [basicData, links, education, experience, projects, skills, languages] =
+    data;
   const [
     handleChangeBasic,
     handleChangeLinks,
     handleChangeEducation,
     handleChangeExperience,
+    handleChangeProjects,
     handleChangeSkills,
+    handleChangeLanguages,
     handleClearAll,
     handleReset,
   ] = handleChange;
 
   return (
     <div className="editor">
-      <h1 className="title">Resume Builder</h1>
+      <div className="editor-header">
+        <h1 className="title">Resume Builder</h1>
+        <h5>@JunehyukYoo</h5>
+      </div>
+
       <form>
         <fieldset>
           <legend>Basic Information</legend>
@@ -110,7 +124,7 @@ const Editor = ({ data, handleChange }) => {
                   key={edu.id}
                   edu={edu}
                   handleChange={[handleChangeEducation, setActiveEduIdx]}
-                  isActive={activeEduIdx == edu.id}
+                  isActive={activeEduIdx === edu.id}
                 />
               );
             })}
@@ -133,6 +147,24 @@ const Editor = ({ data, handleChange }) => {
               );
             })}
           <button onClick={(e) => handleChangeExperience(e, "add")}>
+            Add Experience
+          </button>
+        </fieldset>
+
+        <fieldset>
+          <legend>Projects</legend>
+          {projects.length > 0 &&
+            projects.map((proj) => {
+              return (
+                <ProjectFormItem
+                  key={proj.id}
+                  proj={proj}
+                  handleChange={[handleChangeProjects, setActiveProjIdx]}
+                  isActive={activeProjIdx === proj.id}
+                />
+              );
+            })}
+          <button onClick={(e) => handleChangeProjects(e, "add")}>
             Add Experience
           </button>
         </fieldset>
@@ -170,6 +202,24 @@ const Editor = ({ data, handleChange }) => {
               Add Skill
             </button>
           </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Languages</legend>
+          {languages.length > 0 &&
+            languages.map((lang) => {
+              return (
+                <LanguageFormItem
+                  key={lang.id}
+                  lang={lang}
+                  handleChange={[handleChangeLanguages, setActiveLangIdx]}
+                  isActive={activeLangIdx === lang.id}
+                />
+              );
+            })}
+          <button onClick={(e) => handleChangeLanguages(e, "add")}>
+            Add Language
+          </button>
         </fieldset>
       </form>
       <button onClick={handleReset}>Reset Example</button>

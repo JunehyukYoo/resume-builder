@@ -30,3 +30,14 @@
 .preview ul {
   list-style-type: none;
 }
+
+.thick-border {
+  border: 1.5px solid black;
+}
+
+.preview-skills,
+.preview-languages {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}

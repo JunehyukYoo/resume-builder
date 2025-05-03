@@ -32,11 +32,14 @@
   color: black;
 }
 
+.editor-header {
+  margin: 2rem;
+  color: var(--title-color);
+}
+
 .title {
   font-size: 3rem;
   text-align: center;
-  margin: 2rem;
-  color: var(--title-color);
   text-shadow: 0 0 2px var(--hover-color);
 }
 

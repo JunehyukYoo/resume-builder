@@ -6,7 +6,9 @@ import {
   initLinks,
   initEducation,
   initExperience,
+  initProjects,
   initSkills,
+  initLanguages,
   clearBasicData,
 } from "./components/data";
 import "./App.css";
@@ -16,7 +18,10 @@ function App() {
   const [links, setLinks] = useState(initLinks);
   const [education, setEducation] = useState(initEducation);
   const [experience, setExperience] = useState(initExperience);
+  const [projects, setProjects] = useState(initProjects);
   const [skills, setSkills] = useState(initSkills);
+  const [languages, setLanguages] = useState(initLanguages);
+  console.log(languages);
 
   const handleChangeBasic = (e) => {
     setBasicData({ ...basicData, [e.target.name]: e.target.value });
@@ -43,6 +48,27 @@ function App() {
       if (newSkill) {
         setSkills([...skills, { name: newSkill, id: crypto.randomUUID() }]);
       }
+    }
+  };
+
+  const handleChangeLanguages = (e, mode) => {
+    e.preventDefault();
+    if (mode === "delete") {
+      setLanguages(languages.filter((lang) => lang.id != e.target.id));
+    } else if (mode === "add") {
+      setLanguages([
+        ...languages,
+        { language: newLang, proficiency: 0, id: crypto.randomUUID() },
+      ]);
+    } else {
+      const thisId = e.target.parentElement.id;
+      const thisKey = e.target.name;
+      const thisValue = e.target.value;
+      setLanguages(
+        languages.map((lang) =>
+          lang.id === thisId ? { ...lang, [thisKey]: thisValue } : lang
+        )
+      );
     }
   };
 
@@ -106,12 +132,42 @@ function App() {
     }
   };
 
+  const handleChangeProjects = (e, mode) => {
+    e.preventDefault();
+    if (mode === "delete") {
+      setProjects(projects.filter((proj) => proj.id != e.target.id));
+    } else if (mode === "add") {
+      setProjects([
+        ...projects,
+        {
+          id: crypto.randomUUID(),
+          title: "Untitled",
+          description: "",
+          startDate: "",
+          endDate: "",
+          link: "",
+        },
+      ]);
+    } else {
+      const thisId = e.target.parentElement.id;
+      const thisKey = e.target.name;
+      const thisValue = e.target.value;
+      setProjects(
+        projects.map((proj) =>
+          proj.id === thisId ? { ...proj, [thisKey]: thisValue } : proj
+        )
+      );
+    }
+  };
+
   const handleClearAll = () => {
     setBasicData(clearBasicData);
     setLinks([]);
     setEducation([]);
     setExperience([]);
+    setProjects([]);
     setSkills([]);
+    setLanguages([]);
   };
 
   const handleReset = () => {
@@ -119,24 +175,46 @@ function App() {
     setLinks(initLinks);
     setEducation(initEducation);
     setExperience(initExperience);
+    setProjects(initProjects);
     setSkills(initSkills);
+    setLanguages(initLanguages);
   };
 
   return (
     <div className="app-container">
       <Editor
-        data={[basicData, links, education, experience, skills]}
+        data={[
+          basicData,
+          links,
+          education,
+          experience,
+          projects,
+          skills,
+          languages,
+        ]}
         handleChange={[
           handleChangeBasic,
           handleChangeLinks,
           handleChangeEducation,
           handleChangeExperience,
+          handleChangeProjects,
           handleChangeSkills,
+          handleChangeLanguages,
           handleClearAll,
           handleReset,
         ]}
       />
-      <Preview data={[basicData, links, education, experience, skills]} />
+      <Preview
+        data={[
+          basicData,
+          links,
+          education,
+          experience,
+          projects,
+          skills,
+          languages,
+        ]}
+      />
     </div>
   );
 }

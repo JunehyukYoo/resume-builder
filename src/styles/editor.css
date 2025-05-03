@@ -73,8 +73,7 @@
   outline: none;
 }
 
-.active-edu,
-.active-exp {
+div[class^="active-"] {
   display: flex;
   flex-direction: column;
   padding: 10px;
@@ -83,16 +82,14 @@
   border-radius: var(--border-radius);
 }
 
-.active-edu > :is(input, textarea, select),
-.active-exp > :is(input, textarea, select) {
+div[class^="active-"] > :is(input, textarea, select) {
   padding: 5px;
   background-color: var(--fs-bg-color);
   border: 0 solid var(--border-color);
   border-radius: var(--border-radius);
 }
 
-.inactive-edu,
-.inactive-exp {
+div[class^="inactive-"] {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -103,8 +100,7 @@
   transition: background-color 0.3s ease;
 }
 
-.inactive-edu:hover,
-.inactive-exp:hover {
+div[class^="inactive-"]:hover {
   cursor: pointer;
   background-color: hsl(from var(--hover-color) h s 35%);
 }

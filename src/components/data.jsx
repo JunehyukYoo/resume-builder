@@ -7,7 +7,7 @@ export const initBasicData = {
 };
 
 export const clearBasicData = {
-  name: "Name",
+  name: "Untitled",
   email: "",
   location: "",
   number: "",
@@ -67,7 +67,7 @@ export const initExperience = [
   },
 ];
 
-const initProjects = [
+export const initProjects = [
   {
     id: crypto.randomUUID(),
     title: "Personal Portfolio",
@@ -98,4 +98,11 @@ export const initSkills = [
   { name: "Python", id: crypto.randomUUID() },
   { name: "Java", id: crypto.randomUUID() },
   { name: "C++", id: crypto.randomUUID() },
+];
+
+export const initLanguages = [
+  { language: "English", proficiency: 4, id: crypto.randomUUID() },
+  { language: "Mandarin", proficiency: 3, id: crypto.randomUUID() },
+  { language: "Spanish", proficiency: 3, id: crypto.randomUUID() },
+  { language: "French", proficiency: 1, id: crypto.randomUUID() },
 ];
