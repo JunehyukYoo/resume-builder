@@ -90,16 +90,14 @@ export function ProjectItem({ proj }) {
       }}
     >
       <h6 style={{ fontSize: "20px" }}>{proj.title}</h6>
-      {proj.title !== "Untitled" && (
-        <div
-          style={{
-            textAlign: "left",
-          }}
-        >
-          <p>{proj.description}</p>
-          <p>{`Skills used: ${proj.skillsUsed}`}</p>
-        </div>
-      )}
+      <div
+        style={{
+          textAlign: "left",
+        }}
+      >
+        {proj.description && <p>{proj.description}</p>}
+        {proj.skillsUsed && <p>{`Skills used: ${proj.skillsUsed}`}</p>}
+      </div>
     </div>
   );
 }

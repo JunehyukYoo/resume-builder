@@ -165,7 +165,7 @@ const Editor = ({ data, handleChange }) => {
               );
             })}
           <button onClick={(e) => handleChangeProjects(e, "add")}>
-            Add Experience
+            Add Project
           </button>
         </fieldset>
 
