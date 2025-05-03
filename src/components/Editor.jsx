@@ -18,6 +18,7 @@ const Editor = ({ data, handleChange }) => {
 
   return (
     <div className="editor">
+      <h1 className="title">Resume Builder</h1>
       <form>
         <fieldset>
           <legend>Basic Information</legend>
@@ -153,14 +154,22 @@ const Editor = ({ data, handleChange }) => {
                 );
               })
             : null}
-          <input
-            type="text"
-            id="skills"
-            name="skills"
-            value={basicData.skills}
-            placeholder="JavaScript, React, Node.js"
-            onChange={handleChangeBasic}
-          />
+          <div className="editor-new-link">
+            <input
+              type="text"
+              name="new-skill"
+              placeholder="JavaScript, React, Node.js"
+            />
+            <button
+              style={{ margin: 0, fontSize: "0.75rem" }}
+              onClick={(e) => {
+                handleChangeSkills(e, "add");
+                e.target.previousElementSibling.value = "";
+              }}
+            >
+              Add Skill
+            </button>
+          </div>
         </fieldset>
       </form>
       <button onClick={handleReset}>Reset Example</button>

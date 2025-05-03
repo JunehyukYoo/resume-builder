@@ -41,7 +41,7 @@ function Preview({ data }) {
         <h2 style={{ textAlign: "left" }}>Skills</h2>
         <hr></hr>
         {skills.length > 0 &&
-          skills.map((skill) => <p key={skill.id}>{skill.name}</p>)}
+          skills.reduce((acc, skill) => acc + skill.name + ", ", "")}
       </div>
     </>
   );

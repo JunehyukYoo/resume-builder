@@ -7,6 +7,7 @@
   --border-color: rgb(88, 88, 88);
   --border-radius: 10px;
   --bg-color: rgb(47, 47, 49);
+  --title-color: rgb(182, 156, 156);
 
   --fs-bg-color: rgb(59, 59, 62);
   --btn-bg-color: rgb(140, 121, 121);
@@ -15,7 +16,7 @@
 
   --input-bg-color: rgb(78, 76, 79);
 
-  --test: hsl(280, 1%, 48%);
+  --test: hsl(0, 0%, 37%);
 }
 
 #root {
@@ -29,6 +30,14 @@
   display: flex;
   background-color: rgb(29, 29, 29);
   color: black;
+}
+
+.title {
+  font-size: 3rem;
+  text-align: center;
+  margin: 2rem;
+  color: var(--title-color);
+  text-shadow: 0 0 2px var(--hover-color);
 }
 
 button {
